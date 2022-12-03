@@ -1,30 +1,52 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 
 import Image from 'next/image';
 import styles from './page.module.css';
 
+type Pokemon = { id: number; name: string; image?: string };
 
-
-const fetchMap = new Map<string,Promise<any>>();
-
-function queryClient(name: string, query: () => Promise<any> ) {
-  if (!fetchMap.has(name)) {
-    fetchMap.set(name, query());
+function makeQueryClient() {
+  const fetchMap = new Map<string,Promise<any>>();
+  return function queryClient<QueryResult>(
+    name: string,
+    query: () => Promise<QueryResult>
+  ): Promise<QueryResult> {
+    if (!fetchMap.has(name)) {
+      fetchMap.set(name, query());
+    }
+    return fetchMap.get(name)!;
   }
-  return fetchMap.get(name)!;
 }
 
-
+const queryClient = makeQueryClient();
 
 export default function Home() {
-  const data =  use(
-    queryClient("hello", () =>
-      fetch("http://localhost:3000/api/hello").then(res => res.json())
+  const pokemon =  use(
+    queryClient<Pokemon[]>(
+      "pokemon",
+     () =>
+      fetch("http://localhost:3000/api/pokemon").then(res =>
+       res.json()
+       )
     )
   );
+
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>();
   
+  const pokemonDetail = selectedPokemon
+    ? use(
+    queryClient<Pokemon>(
+      ["pokemon", selectedPokemon.id].join('-'),
+     () =>
+      fetch(`http://localhost:3000/api/${selectedPokemon.id}`).then(
+        (res) => res.json()
+       ) 
+    )
+  )
+ : null; 
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -33,12 +55,17 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          * Now using {' '}
-          <code className={styles.code}>.tsx</code>
+          This is from this <a href="https://www.youtube.com/watch?v=zwQs4wXr9Bg">tutorial</a>
         </p>
 
         <div className={styles.grid}>
-{JSON.stringify(data)}
+          <div>{pokemon.map((p) => (
+            <button key={p.id} onClick={() => setSelectedPokemon(p)}>
+              {p.name}
+            </button>
+          ))}
+            <div>{pokemonDetail && <img src={pokemonDetail.image} />}</div>
+          </div>
         </div>
       </main>
 
@@ -55,5 +82,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
