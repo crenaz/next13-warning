@@ -1,4 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+All right, so I was following this tutorial: https://www.youtube.com/watch?v=zwQs4wXr9Bg
+
+I was able to follow along, but the images in my example are broken because they are declared with an '<img>' tag but Next is expecting the 'Image' component.  To be continued...
+
+
+
+
+ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
