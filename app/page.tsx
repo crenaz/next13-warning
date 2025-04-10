@@ -51,7 +51,7 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
+          So, this is <a href="https://nextjs.org">Next.js</a>
         </h1>
 
         <p className={styles.description}>
@@ -64,7 +64,7 @@ export default function Home() {
               {p.name}
             </button>
           ))}
-            <div>{pokemonDetail && <img src={pokemonDetail.image} />}</div>
+            <div>{pokemonDetail && <Image src={pokemonDetail.image} />}</div>
           </div>
         </div>
       </main>
