@@ -64,7 +64,7 @@ export default function Home() {
               {p.name}
             </button>
           ))}
-            <div>{pokemonDetail && <Image src={pokemonDetail.image} />}</div>
+            <div>{pokemonDetail?.image && <Image src={pokemonDetail.image} alt={pokemonDetail.name} width={200} height={200} />}</div>
           </div>
         </div>
       </main>
