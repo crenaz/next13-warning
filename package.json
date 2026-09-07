@@ -9,14 +9,34 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "18.11.10",
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.9",
-    "eslint": "9.23.0",
-    "eslint-config-next": "13.0.6",
-    "next": "13.0.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.3"
-  }
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^16.3.4",
+    "next": "^16.3.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "@eslint/plugin-kit": "^0.3.4",
+      "@humanfs/node": "^0.16.8",
+      "@opentelemetry/core": "^1.30.1",
+      "ajv": "^6.14.0",
+      "body-parser": "^2.3.0",
+      "brace-expansion": "^2.0.2",
+      "flatted": "^3.4.2",
+      "js-yaml": "^4.3.1",
+      "micromatch": "^4.0.8",
+      "minimatch": "^9.0.5",
+      "picomatch": "^4.0.4",
+      "postcss": "^8.5.28",
+      "qs": "^6.16.0",
+      "stream-json": "^1.9.1",
+      "uuid": "^11.1.0"
+    }
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

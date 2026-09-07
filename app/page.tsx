@@ -4,6 +4,7 @@ import { use, useState } from "react";
 
 import Image from 'next/image';
 import styles from './page.module.css';
+import pokemonData from '../data/pokemon.json';
 
 type Pokemon = { id: number; name: string; image?: string };
 
@@ -23,13 +24,13 @@ function makeQueryClient() {
 const queryClient = makeQueryClient();
 
 export default function Home() {
-  const pokemon =  use(
+  const pokemon = use(
     queryClient<Pokemon[]>(
       "pokemon",
      () =>
-      fetch("http://localhost:3000/api/pokemon").then(res =>
-       res.json()
-       )
+      typeof window !== "undefined"
+        ? fetch("/api/pokemon").then(res => res.json())
+        : Promise.resolve(pokemonData)
     )
   );
 
@@ -40,9 +41,9 @@ export default function Home() {
     queryClient<Pokemon>(
       ["pokemon", selectedPokemon.id].join('-'),
      () =>
-      fetch(`http://localhost:3000/api/${selectedPokemon.id}`).then(
-        (res) => res.json()
-       ) 
+      typeof window !== "undefined"
+        ? fetch(`/api/${selectedPokemon.id}`).then((res) => res.json())
+        : Promise.resolve(undefined as any)
     )
   )
  : null; 

@@ -19,7 +19,7 @@ export default function handler(
     p
       ? {
           ...p,
-          image: `http://localhost:3000/${p.name.toLowerCase()}.jpg`,
+          image: `/${p.name.toLowerCase()}.jpg`,
         }
        : undefined
      );
