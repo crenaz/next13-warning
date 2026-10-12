@@ -21,6 +21,7 @@
   },
   "pnpm": {
     "overrides": {
+      "braces": "^3.0.3",
       "@eslint/plugin-kit": "^0.3.4",
       "@humanfs/node": "^0.16.8",
       "@opentelemetry/core": "^1.30.1",
