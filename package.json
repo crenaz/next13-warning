@@ -23,7 +23,7 @@
   },
   "pnpm": {
     "overrides": {
-      "braces": "github:Im-Fran/braces#3.0.4",
+      "braces": "https://codeload.github.com/Im-Fran/braces/tar.gz/cd87537a878642097328be419a7cb94e7e2d8b95",
       "@eslint/plugin-kit": "^0.3.4",
       "@humanfs/node": "^0.16.8",
       "@opentelemetry/core": "^1.30.1",
@@ -33,7 +33,7 @@
       "flatted": "^3.4.2",
       "js-yaml": "^4.3.1",
       "micromatch": "^4.0.8",
-      "minimatch": "^9.0.5",
+      "minimatch": "^11.0.1",
       "picomatch": "^4.0.4",
       "postcss": "^8.5.28",
       "qs": "^6.16.0",
